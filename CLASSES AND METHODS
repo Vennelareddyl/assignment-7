@@ -1,0 +1,28 @@
+S3
+animal <- list(type = "dog")
+
+
+class(animal) <- "animal"
+
+print.animal <- function(x) {
+  cat("Type of animal:", x$type, "\n")
+}
+# Test the method
+print(animal)
+library(methods)
+
+# Define S4 class 'Animal'
+setClass("Animal",
+         slots = c(type = "character"))
+
+# Create instance of 'Animal' class
+animal <- new("Animal", type = "cat")
+
+# Define method for 'print' generic function for 'Animal' class
+setMethod("print", "Animal",
+          function(x) {
+            cat("Type of animal:", x@type, "\n")
+          })
+
+# Test the method
+print(animal)
